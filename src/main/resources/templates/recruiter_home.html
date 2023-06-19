@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Recruiter Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<div class="container">
+  <div>
+    <h3>JobPortal CRUD App</h3>
+  </div>
+  <a th:href="@{/LogInRecruiterController/logInPage}">Recruiter Sign-In</a> | <a th:href="@{/recruiters/showFormForAdd}" >Recruiter Sign-Up</a>  | <a th:href="@{/}" class="float-right">Find Jobs</a>    <div>    <hr style="height:1px;background-color: black">
+  </div>
+  <p class="h4 mb-4"> Post Jobs</p>
+
+  <form action="#" >
+
+
+
+    <div class="form-group blu-margin">
+      <input type="text"  class="form-control mb-4 col-4" placeholder="Job Title">
+    </div>
+    <div class="form-group blu-margin">
+      <input type="text"  class="form-control mb-4 col-4" placeholder="Company Name">
+    </div>
+    <div class="form-group blu-margin">
+      <input type="text"  class="form-control mb-4 col-4" placeholder="City">
+    </div>
+
+    <button type="submit" class="btn btn-info col-2">Post Job</button>
+    <button type="reset" class="btn btn-info col-2">Clear</button>
+
+  </form>
+  </table>
+  <hr>
+  <a th:href="@{/recruiters/viewRecruitersPage}">Recruiter List</a>
+
+</div>
+</body>
+
+</html>
