@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Home Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+
+<body>
+<div class="container">
+	<div>
+		<h2>JobPortal CRUD App</h2>
+	</div>
+	<span sec:authorize="hasRole('ROLE_JOB_SEEKER')">
+	<a th:href="@{/register/JobSeekers_HomePage}" >Find Jobs / Job Seekers Page</a>  |
+	</span>
+	<span sec:authorize="hasRole('ROLE_RECRUITER')">
+	<a  th:href="@{/register/Recruiters_HomePage}">Post a Job / Recruiters Page</a> |
+	</span>
+	 <a th:href="@{/showMyLoginPage}" class="float-right">LogIn</a>
+		<br>
+		<hr style="height:1px;background-color: black">
+
+	<p class="h4 mb-4">Welcome to Job-Portal</p>
+
+</div>
+	<hr><h3 align="center">Copyright-2023@JOB-PORTAL</h3>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
