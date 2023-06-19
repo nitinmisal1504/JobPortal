@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Recruiter Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+<!--
+<script>
+  function preventBack(){window.history.forward();}
+  setTimeout("preventBack()", 0);
+  window.onunload=function(){};
+</script>
+-->
+<div class="container">
+  <div>
+    <h3>JobPortal CRUD App</h3>
+  </div>
+
+  <div>
+    <a th:href="@{/}" >Home</a> |
+    <a th:href="@{/register/JobSeekers_FindJobPage}">Find Jobs</a>  |
+    <form class="float-right" action="#" th:action="@{/logout}"  method="POST" >
+      <input type="submit" value="Logout" class="btn btn-outline-primary btn-sm" />
+    </form>
+    <br>
+    <hr style="height:1px;background-color: black">
+  </div>
+  Welcome <b><span sec:authentication="name" class="block"></span></b>  <hr>
+</div>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>Add Recruiter Form</title>
@@ -17,32 +17,19 @@
   <div>
     <h3>JobPortal CRUD App</h3>
   </div>
-  <a th:href="@{/LogInRecruiterController/logInPage}">Recruiter Sign-In</a> | <a th:href="@{/recruiters/showFormForAdd}" >Recruiter Sign-Up</a>  | <a th:href="@{/}" class="float-right">Find Jobs</a>    <div>    <hr style="height:1px;background-color: black">
+  <div>
+    <div>
+      <a th:href="@{/}" >Home</a> |
+      <a th:href="@{/register/Recruiters_PostJobPage}">Post Jobs</a>  |
+      <form class="float-right" action="#" th:action="@{/logout}"  method="POST" >
+        <input type="submit" value="Logout" class="btn btn-outline-primary btn-sm" />
+      </form>
+      <br>
+      <hr style="height:1px;background-color: black">
+    </div>
+    Welcome <b><span sec:authentication="name" class="block"></span></b>
+    <hr>
   </div>
-  <p class="h4 mb-4"> Post Jobs</p>
-
-  <form action="#" >
-
-
-
-    <div class="form-group blu-margin">
-      <input type="text"  class="form-control mb-4 col-4" placeholder="Job Title">
-    </div>
-    <div class="form-group blu-margin">
-      <input type="text"  class="form-control mb-4 col-4" placeholder="Company Name">
-    </div>
-    <div class="form-group blu-margin">
-      <input type="text"  class="form-control mb-4 col-4" placeholder="City">
-    </div>
-
-    <button type="submit" class="btn btn-info col-2">Post Job</button>
-    <button type="reset" class="btn btn-info col-2">Clear</button>
-
-  </form>
-  </table>
-  <hr>
-  <a th:href="@{/recruiters/viewRecruitersPage}">Recruiter List</a>
-
 </div>
 </body>
 
