@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Recruiter Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<div class="container">
+  <div>
+    <h3>JobPortal CRUD App</h3>
+  </div>
+  <a th:href="@{/LogInRecruiterController/logInPage}">Recruiter Sign-In</a> | <a th:href="@{/recruiters/showFormForAdd}" >Recruiter Sign-Up</a>  | <a th:href="@{/}" class="float-right">Find Jobs</a>    <div>  <div>
+    <hr style="height:1px;background-color: black">
+  </div>
+
+  <p class="h4 mb-4">Save Recruiter</p>
+
+  <form action="#" th:modelAttribute="recruiter" th:action="@{/saveRecruiter}" th:object="${recruiter}" method="post">
+
+    <input type="hidden" th:field="*{id}"/>
+
+    <div class="form-group blu-margin">
+        <input type="text" th:field="*{recruiterName}" class="form-control mb-4 col-4" placeholder="Recruiter Name">
+    </div>
+    <div class="form-group blu-margin">
+      <input type="text" th:field="*{companyName}" class="form-control mb-4 col-4" placeholder="Company Name">
+    </div>
+    <div class="form-group blu-margin">
+      <input type="text" th:field="*{mobile}" class="form-control mb-4 col-4" placeholder="Mobile">
+    </div>
+    <div class="form-group blu-margin">
+      <input type="text" th:field="*{email}" class="form-control mb-4 col-4" placeholder="Email">
+    </div>
+    <div class="form-group blu-margin">
+      <input type="text" th:field="*{password}" class="form-control mb-4 col-4" placeholder="password">
+    </div>
+
+    <button type="submit" class="btn btn-info col-2">Save</button>
+    <button type="reset" class="btn btn-info col-2">Clear</button>
+
+  </form>
+  </table>
+  <hr>
+  <a th:href="@{/recruiters/viewRecruitersPage}">Back to Recruiter List</a>
+
+</div>
+</body>
+
+</html>

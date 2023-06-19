@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+
+    <h3>JobPortal CRUD App</h3>
+    <hr>
+    <div>
+        User: <span sec:authentication="name"></span>
+        <br>
+        Role(s): <span sec:authentication="principal.authorities"></span>
+        <br><br>
+    </div>
+ <a th:href="@{/recruiters/showFormForAdd}" class="btn btn-primary">Add Recruiter</a>
+<div align="center">
+    <h1>Recruiter List</h1>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+        <th>Id</th>
+        <th>Recruiter Name</th>
+        <th>Company Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+        </thead>
+        <tbody>
+    <tr th:each="recruiter : ${listRecruiters}">
+          <td th:text="${recruiter.id}"/>
+          <td th:text="${recruiter.recruiterName}"/>
+          <td th:text="${recruiter.companyName}"/>
+          <td th:text="${recruiter.mobile}"/>
+          <td th:text="${recruiter.email}"/>
+          <td th:text="${recruiter.password}"/>
+
+        <div sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
+
+            <td>
+          <span sec:authorize="hasAnyRole('ROLE_MANAGER', 'ROLE_ADMIN')">
+
+            <!-- Add "update" button/link -->
+            <a th:href="@{/recruiters/showFormForUpdate(id=${recruiter.id})}"
+               class="btn btn-info btn-sm">
+              Update
+            </a>
+
+          </span>
+            </td>
+                <td>
+                <span sec:authorize="hasRole('ROLE_ADMIN')">
+
+            <!-- Add "delete" button/link -->
+            <a th:href="@{/recruiters/deleteRecruiter(id=${recruiter.id})}"
+               class="btn btn-danger btn-sm"
+               onclick="if (!(confirm('Are you sure you want to delete this Recruiter?'))) return false">
+              Delete
+            </a>
+
+          </span>
+            </td>
+        </div>
+    </tr>
+        </tbody>
+    </table>
+
+
+
+</div>
+    <hr>
+    <!-- Add a logout button -->
+    <form action="#" th:action="@{/logout}"
+          method="POST" >
+
+        <input type="submit" value="Logout" class="btn btn-outline-primary mt-2" />
+
+    </form>
+</body>
+</html>
