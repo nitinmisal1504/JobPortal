@@ -1,51 +1,67 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Add Recruiter Form</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+	<title>luv2code Company Home Page</title>
 </head>
+
 <body>
+	<h2>luv2code Company Home Page</h2>
+	<hr>
+	
+	<p>
+	Welcome to the luv2code company home page!
+	</p>
+	
+	<hr>
+	
+	<!-- display user name and role -->
+	
+	<div>
+		User: <span sec:authentication="name"></span>
+		<br><br>
+		Role(s): <span sec:authentication="principal.authorities"></span>
+		<br><br>
 
+		<!-- Check for login error -->																	
+		<div th:if="${session.user}" >
+			<p th:text="'First name: ' + ${session.user.firstName} + ', Last name: ' + ${session.user.lastName} + ', Email: ' + ${session.user.email}"></p>
+		</div>		
+	</div>
+	
+	<div sec:authorize="hasRole('ROLE_MANAGER')">
+	
+		<!-- Add a link to point to /leaders ... this is for the managers -->
+		
+		<p>
+			<a th:href="@{/leaders}">Leadership Meeting</a>
+			(Only for Manager peeps)
+		</p>
 
-<div class="container">
-  <div>
-  <h3>JobPortal CRUD App</h3>
-  </div>
-    <a th:href="@{/}">Sign-In</a> | <a th:href="@{/}" >Sign-Up</a>  | <a th:href="@{/recruiters/RecruitersPage}" class="float-right">Recruiter / Post a Job</a>
-  <div>
-    <hr style="height:1px;background-color: black">
-  </div>
-  <p class="h4 mb-4"> Find Jobs</p>
+	</div>	
 
-  <form action="#" >
+	<div sec:authorize="hasRole('ROLE_ADMIN')">  
 
+		<!-- Add a link to point to /systems ... this is for the admins -->
+		
+		<p>
+			<a th:href="@{/systems}">IT Systems Meeting</a>
+			(Only for Admin peeps)
+		</p>
+	
+	</div>
 
-
-    <div class="form-group blu-margin">
-        <input type="text"  class="form-control mb-4 col-4" placeholder="Job Title">
-    </div>
-    <div class="form-group blu-margin">
-      <input type="text"  class="form-control mb-4 col-4" placeholder="Company Name">
-    </div>
-    <div class="form-group blu-margin">
-      <input type="text"  class="form-control mb-4 col-4" placeholder="City">
-    </div>
-
-    <button type="submit" class="btn btn-info col-2">Find Job</button>
-    <button type="reset" class="btn btn-info col-2">Clear</button>
-
-  </form>
-  </table>
-  <hr>
-  <a th:href="@{/recruiters/viewRecruitersPage}">Recruiter List</a>
-
-</div>
+	<hr>
+	
+	
+	<!-- Add a logout button -->
+	<form th:action="@{/logout}" 
+			   method="POST">
+	
+		<input type="submit" value="Logout" />
+	
+	</form>	
+			
 </body>
 
 </html>

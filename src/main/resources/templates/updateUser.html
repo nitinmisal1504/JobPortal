@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Recruiter Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <div>
+        <h3>JobPortal CRUD App</h3>
+    </div>
+<hr>
+
+    <p class="h4 mb-4">Update User</p>
+
+    <form action="#" th:modelAttribute="user" th:action="@{/register/saveUser}" th:object="${user}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div class="form-group blu-margin">
+            <input type="text" th:field="*{userName}" class="form-control mb-4 col-4" placeholder="User Name">
+        </div>
+
+        <div class="form-group blu-margin">
+            <input type="text" th:field="*{password}" class="form-control mb-4 col-4" placeholder="password">
+        </div>
+
+        <div class="form-group blu-margin">
+            <input type="text" th:field="*{firstName}" class="form-control mb-4 col-4" placeholder="First Name">
+        </div>
+        <div class="form-group blu-margin">
+            <input type="text" th:field="*{lastName}" class="form-control mb-4 col-4" placeholder="Last Name">
+        </div>
+        <div class="form-group blu-margin">
+            <input type="text" th:field="*{email}" class="form-control mb-4 col-4" placeholder="Email">
+        </div>
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+        <button type="reset" class="btn btn-info col-2">Clear</button>
+
+    </form>
+    <hr>
+    <a th:href="@{/register/viewUsersPage}">Back to User List</a>
+
+</div>
+</body>
+
+</html>
